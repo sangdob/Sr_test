@@ -1,0 +1,61 @@
+server:
+  compression:
+    enabled: true
+  port: 8080
+  tomcat:
+    use-relative-redirects: true
+
+#Spring Settings
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+  devtools:
+    livereload:
+      enabled: true
+  datasource:
+    url: jdbc:h2:~/srtest
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    database: h2
+    show-sql: true
+    generate-ddl: true
+    open-in-view: true
+    hibernate:
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+  data:
+    web:
+      pageable:
+        default-page-size: 25
+        max-page-size: 1000
+        one-indexed-parameters: false
+        page-parameter: page
+        size-parameter: limit
+
+# log level
+logging.level:
+  org.hibernate.SQL: info
+  org.hibernate.type: info
+  org.hibernate.type.descriptor.sql: debug
+
+# jwt token
+jwt:
+  secretKey: testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
+  accessTokenExpire: 8165431
+  refreshTokenExpire: 564657
